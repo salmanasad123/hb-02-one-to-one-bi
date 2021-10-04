@@ -6,7 +6,7 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
-public class GetInstructorDetailDemo {
+public class DeleteInstructorDetailDemo {
 
     public static void main(String[] args) {
 
@@ -35,6 +35,11 @@ public class GetInstructorDetailDemo {
 
             // print the associated instructor by using instructor detail (using bi-directional mapping)
             System.out.println("The associated Instructor : " + instructorDetail.getInstructor());
+
+            // we are deleting instructor delete and this is also delete instructor because
+            // we have set cascadeType = ALL so every operation applied on instructorDetail will
+            // cascade to instructor and this will result in deletion of the instructor from database
+            session.delete(instructorDetail);
 
             // commit the transaction
             session.getTransaction().commit();
