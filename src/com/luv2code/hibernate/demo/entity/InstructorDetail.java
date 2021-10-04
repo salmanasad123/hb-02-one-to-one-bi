@@ -23,7 +23,8 @@ public class InstructorDetail {
     // (mapped by = instructorDetail) basically refers to instructor detail property in the instructor class
     // we are telling hibernate that this instructor field is mapped by the Instructor Detail property
     // in the instructor class
-    @OneToOne(mappedBy = "instructorDetail", cascade = CascadeType.ALL)
+    @OneToOne(mappedBy = "instructorDetail",
+            cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.MERGE, CascadeType.REFRESH})
     private Instructor instructor;
 
     // no arg constructor
