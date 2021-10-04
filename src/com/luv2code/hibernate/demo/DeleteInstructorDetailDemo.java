@@ -36,6 +36,12 @@ public class DeleteInstructorDetailDemo {
             // print the associated instructor by using instructor detail (using bi-directional mapping)
             System.out.println("The associated Instructor : " + instructorDetail.getInstructor());
 
+
+            // we need to break the bi-directional link because we don't have cascadeType.REMOVE and this
+            // will not work unless we break the link because we are only deleting instructor detail
+            // and we are keeping the instructor
+            instructorDetail.getInstructor().setInstructorDetail(null);
+
             // we are deleting instructor delete and this is also delete instructor because
             // we have set cascadeType = ALL so every operation applied on instructorDetail will
             // cascade to instructor and this will result in deletion of the instructor from database
